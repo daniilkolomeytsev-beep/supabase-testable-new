@@ -3,7 +3,7 @@ name: Deploy Migrations to the Staging DB branch
 on:
   push:
     branches:
-      - stage
+      - staging
     paths:
       - 'supabase/**'
 workflow_dispatch:
