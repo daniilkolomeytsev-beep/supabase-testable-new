@@ -15,9 +15,9 @@ jobs:
         with:
           version: 1.16.1
 
-      - run: supabase db start
-      - run: supabase db lint
-      - run: supabase test db
+      - run: supabase db start --debug
+      - run: supabase db lin --debugt
+      - run: supabase test d --debugb
 
       - name: Verify generated types are checked in
         run: |
