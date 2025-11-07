@@ -3,7 +3,7 @@ name: Deploy Migrations to the Develop DB branch
 on:
   push:
     branches:
-      - development
+      - develop
     paths:
       - 'supabase/**'
 workflow_dispatch:
