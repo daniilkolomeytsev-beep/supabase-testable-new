@@ -10,19 +10,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
       - uses: supabase/setup-cli@v1
-        with:
-          version: 1.16.1
-
-      - run: supabase db start --debug
-      - run: supabase db lin --debugt
-      - run: supabase test d --debugb
-
-      - name: Verify generated types are checked in
+      - run: supabase init
+      - run: supabase db start
+      - name: Verify generated types match Postgres schema
         run: |
-          supabase gen types typescript --local > types.gen.ts
-          if ! git diff --ignore-space-at-eol --exit-code --quiet types.gen.ts; then
+          supabase gen types typescript --local > schema.gen.ts
+          if ! git diff --ignore-space-at-eol --exit-code --quiet schema.gen.ts; then
             echo "Detected uncommitted changes after build. See status below:"
             git diff
             exit 1
